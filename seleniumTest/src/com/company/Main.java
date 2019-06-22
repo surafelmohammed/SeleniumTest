@@ -19,20 +19,20 @@ public class Main {
         WebDriver driver;
         driver = new FirefoxDriver();
 
-        driver.navigate().to("https://mail.google.com/mail/u/0/#inbox"); // navigate to gmail website
-        driver.findElement(By.xpath("//input[@name='identifier']")).sendKeys("YOUR-EMAIL-GOES-HERE"); // enter email address
+        driver.navigate().to("https://mail.google.com/mail/u/0/#inbox");
+        driver.findElement(By.xpath("//input[@name='identifier']")).sendKeys("surafelmohammed66@gmail.com");
         driver.findElement(By.xpath("//*[@id=\"identifierNext\"]")).click();
 
         Thread.sleep(5000);
-        WebElement pass = driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input")); // reference of password
+        WebElement pass = driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"));
         pass.click();
-        pass.sendKeys("YOUR-PASSWORD-GOES-HERE"); // enter password
+        pass.sendKeys("Surafel1");
         driver.findElement(By.xpath("//*[@id=\"passwordNext\"]")).click(); // submit form
 
         Thread.sleep(4000); // wait until the messages are loaded
-        List<WebElement> unreadEmails = driver.findElements(By.xpath("//*[@class='zF']")); // filter out unread texts
+        List<WebElement> unreadEmails = driver.findElements(By.xpath("//*[@class='zF']"));
 
-        FileWriter fw=new FileWriter("unread_messages.txt"); // iterate and write on file
+        FileWriter fw=new FileWriter("unread_messages.txt");
         for (WebElement email: unreadEmails ) {
             fw.write(email.getText()+"\n");
 
